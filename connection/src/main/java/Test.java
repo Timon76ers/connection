@@ -1,11 +1,9 @@
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import mediator.Mediator;
-import mediator.MediatorManager;
 
-import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
+import java.io.IOException;
+import java.io.Serializable;
+import java.io.StringWriter;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Test implements Serializable {

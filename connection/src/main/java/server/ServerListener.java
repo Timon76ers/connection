@@ -3,13 +3,14 @@ package server;
 import mediator.Mediator;
 import mediator.MediatorManager;
 import utility.ConsoleHelper;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ServerListener implements Runnable{
-    private static CopyOnWriteArrayList<Assistant> assistants = new CopyOnWriteArrayList<>();
+    private static CopyOnWriteArrayList<server.Assistant> assistants = new CopyOnWriteArrayList<>();
 
     @Override
     public void run() {
@@ -17,7 +18,7 @@ public class ServerListener implements Runnable{
             while (true) {
                 Socket socket = serverSocket.accept();
                 ConsoleHelper.consoleLog("Соединение установлено! К вашему серверу подключился: " + socket.getRemoteSocketAddress().toString().split(":")[0].substring(1));
-                Assistant assistant = new Assistant(socket);
+                server.Assistant assistant = new server.Assistant(socket);
                 assistants.add(assistant);
                 new Thread(assistant).start();
             }
